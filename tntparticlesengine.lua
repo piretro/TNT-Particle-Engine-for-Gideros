@@ -810,7 +810,7 @@ function CEmitter:onEnterFrame(event)
 								end
 								particlePoint.lifeStart = os.timer()
 								if particlePoint.fixedDelay == "Y" then --if fixedDelay == YES 
-									particlePoint.bornDelay = particles.maxDelay*j
+									particlePoint.bornDelay = particles.maxDelay*(j-1)
 								else --default tnt particle random behaviour
 									particlePoint.bornDelay = qRandom(0, particles.maxDelay * 1000) / 1000
 								end
