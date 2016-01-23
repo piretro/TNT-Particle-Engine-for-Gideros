@@ -1,8 +1,12 @@
 -- ############################################# --
--- ## TNT Particles Engine v1.13              ## --
+-- ## TNT Particles Engine v1.14              ## --
 -- ## By Gianluca D'Angelo Copyright (C) 2012 ## --
 -- ############################################# --
 -- official website with full documentation http://www.tntparticlesengine.com/
+
+-- Version v1.14  release note --------------------
+-- avoid sync of particles start time if appication is suspended and resumed
+
 -- Version v1.13  release note --------------------
 -- added fixedDelay option to CParticles.new as last parameter. 
 -- fixedDelay accepted values: "Y" | nil (backward compatible)
@@ -43,6 +47,10 @@ function CEmitter:init(xPos, yPos, direction, parentGroup)
 		pause = false, -- emitter paused ?
 		hide = false, -- emitter hidden ?
 	}
+	
+	--avoid sync of particles start time if appication is suspended and resumed
+	self:addEventListener(Event.APPLICATION_SUSPEND, function() self:pause(true) end)
+	self:addEventListener(Event.APPLICATION_RESUME, function() self:pause(false) end)	
 end
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
