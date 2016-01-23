@@ -49,8 +49,8 @@ function CEmitter:init(xPos, yPos, direction, parentGroup)
 	}
 	
 	--avoid sync of particles start time if appication is suspended and resumed
-	self:addEventListener(Event.APPLICATION_SUSPEND, function() self:pause(true) end)
-	self:addEventListener(Event.APPLICATION_RESUME, function() self:pause(false) end)	
+	self:addEventListener(Event.APPLICATION_SUSPEND, function() if self:started() then self:pause(true) end end)
+	self:addEventListener(Event.APPLICATION_RESUME, function() if self.emitter.pause then  self:pause(false) end end)	
 end
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
