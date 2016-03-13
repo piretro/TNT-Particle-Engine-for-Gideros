@@ -12,7 +12,7 @@
 -- fixedDelay accepted values: "Y" | nil (backward compatible)
 -- if fixedDelay=="Y", each new particle is born with a fixed delay (==maxStartupDelay) else it follows default random behaviour (v1.12)
 --[[Example usage: 
-(v. 1.13 only)
+(v. 1.13 and up)
 defaultParticle = CParticles.new(particlesSprite, particlesMax, particlesMaxLife, particlesMaxStartupDelay, blendingMode, fixedDelay)
 
 defaultParticleFixedDelay = CParticles.new("sprites/ember.png", 10, 3, 0.3, "add", "Y")
